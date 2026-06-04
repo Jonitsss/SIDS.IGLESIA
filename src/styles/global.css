@@ -313,6 +313,18 @@ em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
   filter: grayscale(0%);
   transform: scale(1.04);
 }
+.hero-img-top img {
+  object-position: center top;
+}
+.hero-img-top-soft img {
+  object-position: center 17%;
+}
+.hero-img-top-9 img {
+  object-position: center 9%;
+}
+.hero-img-bottom img {
+  object-position: center bottom;
+}
 .hero-foot {
   padding: 16px 0 0;
   font-family: var(--font-sans);

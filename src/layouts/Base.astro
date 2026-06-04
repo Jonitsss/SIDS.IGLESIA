@@ -13,7 +13,7 @@ const {
   ogImage = "/assets/logo.png",
 } = Astro.props;
 
-const siteUrl = Astro.site ?? new URL("https://sids.iglesia");
+const siteUrl = Astro.site ?? new URL("https://sidsiglesia.com.ar");
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const ogImageAbs = new URL(ogImage, siteUrl).toString();
 const fullTitle = title.includes("SIDS") ? title : `${title} · SIDS`;

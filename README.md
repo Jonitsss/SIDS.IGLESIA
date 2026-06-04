@@ -2,7 +2,7 @@
 
 Sitio web oficial de la **Santa Iglesia del Señor** (SIDS) · Árbol de Vida — Ingeniero Allan, Buenos Aires.
 
-🌐 **Sitio**: [sids.iglesia](https://sids.iglesia)
+🌐 **Sitio**: [sidsiglesia.com.ar](https://sidsiglesia.com.ar)
 📍 **Dirección**: Calle 21 y 7, Barrio el Parque, Ingeniero Allan
 ⛪ **Fundada**: 1974
 
@@ -55,7 +55,7 @@ npm run preview      # Preview del build local
 2. Vercel detecta Astro automáticamente:
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
-3. (Opcional) Configurá el dominio personalizado `sids.iglesia` en _Settings → Domains_
+3. (Opcional) Configurá el dominio personalizado `sidsiglesia.com.ar` en _Settings → Domains_
 
 ## SEO incluido
 
@@ -69,38 +69,6 @@ npm run preview      # Preview del build local
 - ✅ `lang="es"` y geo-tags (`geo.region`, `geo.placename`)
 - ✅ Imágenes con `alt` y `loading="lazy"`
 - ✅ Preconnect a Google Fonts
-
-## Performance
-
-- HTML estático puro (sin SSR runtime)
-- 0 KB de JavaScript de framework (Astro no envía runtime)
-- Solo el JS vanilla de la página (~1 KB minificado, inlinado)
-- CSS único, minificado, ~20 KB
-- Imágenes con `loading="lazy"` y preconnect a fonts
-
-## Personalización
-
-### Cambiar el dominio
-
-En `astro.config.mjs`:
-
-```js
-site: "https://tu-dominio.com",
-```
-
-### Cambiar colores / tipografías
-
-Todas las variables de diseño están en `src/styles/global.css` bajo `:root`:
-
-```css
---bg-light, --bg-dark, --bg-deep, --bg-black
---accent (#DAE953)
---font-sans (Inter), --font-serif (Playfair Display), --font-display (Space Mono)
-```
-
-### Cambiar la imagen Open Graph
-
-Reemplazá `public/assets/logo.png` con una imagen de 1200×630 px (formato PNG o JPG) y actualizá la referencia en `src/layouts/Base.astro` si usás otro nombre.
 
 ## Licencia
 

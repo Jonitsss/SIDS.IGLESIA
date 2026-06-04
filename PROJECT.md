@@ -16,7 +16,7 @@ Documento de proyecto: estado, decisiones técnicas, contenido y roadmap.
 | **Coordenadas aproximadas** | -34.8867, -58.1245 |
 | **Obispos** | Dr. Edgardo Norberto Montenegro · Dra. Magdalena Ciulla de Montenegro |
 | **Idioma** | Español (Argentina) |
-| **Domicilio digital** | sids.iglesia |
+| **Domicilio digital** | sidsiglesia.com.ar |
 
 ## 2. Pilares (Valores)
 
@@ -172,5 +172,5 @@ Cada `git push` a la rama principal dispara un deploy automático en Vercel. No 
 
 ---
 
-**Mantenedor**: Comunidad SIDS · [sids.iglesia](https://sids.iglesia)
+**Mantenedor**: Comunidad SIDS · [sidsiglesia.com.ar](https://sidsiglesia.com.ar)
 **Última actualización**: ver `git log`
