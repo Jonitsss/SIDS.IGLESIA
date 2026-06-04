@@ -118,8 +118,14 @@ const orgSchema = {
 
     <!-- Datos estructurados: Church -->
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+
+    <!-- Reset scroll al recargar: evita que el hero se vea sobre el navbar -->
+    <script is:inline>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    </script>
   </head>
-  <body>
+  <body class="loading">
     <slot />
     <script>
       import "../scripts/main.js";

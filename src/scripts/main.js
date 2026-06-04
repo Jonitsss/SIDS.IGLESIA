@@ -12,9 +12,14 @@
     const page   = $("#page");
     if (!loader || !pctEl || !page) return;
 
+    const finish = () => {
+      document.body.classList.remove("loading");
+    };
+
     if (prefersReducedMotion) {
       loader.classList.add("hidden");
       page.classList.add("visible");
+      finish();
       return;
     }
 
@@ -29,6 +34,7 @@
         setTimeout(() => {
           loader.classList.add("hidden");
           page.classList.add("visible");
+          finish();
         }, 350);
       }
     }, 90);
