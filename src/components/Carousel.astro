@@ -1,0 +1,64 @@
+---
+// Carousel: rotación automática + controles manuales.
+// Estilo B&W con gradiente verde desde abajo (sin blur).
+const slides = [
+  { src: "/assets/img/obispo.jpg", alt: "Obispo Dr. Edgardo Norberto Montenegro" },
+  { src: "/assets/img/dra.jpg", alt: "Dra. Magdalena Ciulla de Montenegro" },
+];
+---
+
+<figure
+  class="img-card img-card--carousel reveal-el"
+  role="region"
+  aria-roledescription="carrusel"
+  aria-label="Liderazgo pastoral de SIDS"
+  data-carousel
+>
+  <div class="carousel-track" data-carousel-track>
+    {slides.map((s, i) => (
+      <div
+        class:list={["carousel-slide", { "is-active": i === 0 }]}
+        data-carousel-slide
+        aria-hidden={i === 0 ? "false" : "true"}
+      >
+        <img src={s.src} alt={s.alt} loading={i === 0 ? "eager" : "lazy"} />
+      </div>
+    ))}
+  </div>
+
+  <div class="carousel-controls">
+    <button
+      type="button"
+      class="carousel-btn carousel-btn--prev"
+      data-carousel-prev
+      aria-label="Imagen anterior"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="carousel-btn carousel-btn--next"
+      data-carousel-next
+      aria-label="Imagen siguiente"
+    >
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 6l6 6-6 6" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="carousel-dots" role="tablist" aria-label="Selector de imagen">
+    {slides.map((s, i) => (
+      <button
+        type="button"
+        class:list={["carousel-dot", { "is-active": i === 0 }]}
+        role="tab"
+        aria-selected={i === 0 ? "true" : "false"}
+        aria-label={`Ir a imagen ${i + 1}: ${s.alt}`}
+        data-carousel-dot={i}
+      />
+    ))}
+  </div>
+</figure>

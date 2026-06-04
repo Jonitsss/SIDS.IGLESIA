@@ -130,4 +130,95 @@
   /* ─── Year ─── */
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ─── Carousel ─── */
+  (() => {
+    const root = $("[data-carousel]");
+    if (!root) return;
+
+    const slides = $$("[data-carousel-slide]", root);
+    const dots   = $$("[data-carousel-dot]", root);
+    const prev   = $("[data-carousel-prev]", root);
+    const next   = $("[data-carousel-next]", root);
+    if (slides.length < 2) return;
+
+    const INTERVAL = 5000;
+    let index = 0;
+    let timer = null;
+    let paused = false;
+
+    const goTo = (i) => {
+      index = (i + slides.length) % slides.length;
+      slides.forEach((s, k) => {
+        const active = k === index;
+        s.classList.toggle("is-active", active);
+        s.setAttribute("aria-hidden", String(!active));
+      });
+      dots.forEach((d, k) => {
+        const active = k === index;
+        d.classList.toggle("is-active", active);
+        d.setAttribute("aria-selected", String(active));
+      });
+    };
+
+    const nextSlide = () => goTo(index + 1);
+    const prevSlide = () => goTo(index - 1);
+
+    const start = () => {
+      if (paused || prefersReducedMotion) return;
+      stop();
+      timer = setInterval(nextSlide, INTERVAL);
+    };
+    const stop = () => {
+      if (timer) { clearInterval(timer); timer = null; }
+    };
+
+    // Pausa al hover/focus
+    root.addEventListener("mouseenter", stop);
+    root.addEventListener("mouseleave", start);
+    root.addEventListener("focusin", stop);
+    root.addEventListener("focusout", start);
+
+    // Pausa cuando la pestaña no es visible
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop(); else start();
+    });
+
+    // Controles manuales
+    if (prev) prev.addEventListener("click", () => { prevSlide(); start(); });
+    if (next) next.addEventListener("click", () => { nextSlide(); start(); });
+    dots.forEach((d) => {
+      d.addEventListener("click", () => {
+        goTo(parseInt(d.dataset.carouselDot, 10) || 0);
+        start();
+      });
+    });
+
+    // Swipe en mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    root.addEventListener("touchstart", (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      stop();
+    }, { passive: true });
+    root.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        dx < 0 ? nextSlide() : prevSlide();
+      }
+      start();
+    }, { passive: true });
+
+    // Pausa si el usuario no quiere animación
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    paused = motionQuery.matches;
+    motionQuery.addEventListener("change", (e) => {
+      paused = e.matches;
+      if (paused) stop(); else start();
+    });
+
+    start();
+  })();
 })();
