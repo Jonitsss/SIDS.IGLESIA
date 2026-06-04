@@ -1,0 +1,52 @@
+---
+// Reuniones: horarios semanales + tags temáticos.
+const schedule = [
+  { day: "Jueves", time: "20:00 hs", desc: "Reunión General" },
+  { day: "Sábado", time: "18:00 hs", desc: "Reunión de Jóvenes" },
+  { day: "Domingo", time: "18:00 hs", desc: "Reunión General" },
+];
+const tags = ["Alabanza", "Adoración", "Comunión", "Enseñanza", "Oración"];
+---
+
+<section class="section section-dark" id="reuniones">
+  <div class="container two-col">
+    <figure class="img-card reveal-el">
+      <img src="/assets/img/feature-domingo.jpg" alt="Reunión dominical en SIDS" loading="lazy" />
+    </figure>
+    <div class="col reveal-el">
+      <div class="eyebrow">05 — Nuestras Reuniones</div>
+      <h2 class="section-headline">
+        Te esperamos<br>con las puertas <em>abiertas</em>
+      </h2>
+      <p class="body-text">
+        Tres encuentros semanales para adorar, aprender, orar y crecer
+        en familia.
+      </p>
+      <ul class="schedule-list">
+        {schedule.map((s) => (
+          <li class="schedule-item">
+            <span class="schedule-day">{s.day}</span>
+            <span class="schedule-time">{s.time}</span>
+            <span class="schedule-desc">{s.desc}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="tag-group">
+        {tags.map((t) => <span class="tag">{t}</span>)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BIBLE (dark) -->
+<section class="section section-black">
+  <div class="container quote-wrap">
+    <p class="quote-pre">Salmos 34:19</p>
+    <blockquote class="quote">
+      <span class="line-1">MUCHAS</span>
+      <span class="line-2"><span class="hl">SON LAS</span></span>
+      <span class="line-3">AFLICCIONES DEL JUSTO</span>
+      <span class="line-4">PERO DE TODAS ELLAS LO LIBRARÁ EL SEÑOR.</span>
+    </blockquote>
+  </div>
+</section>

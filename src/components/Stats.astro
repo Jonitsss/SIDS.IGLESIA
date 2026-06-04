@@ -1,0 +1,27 @@
+---
+// Stats: contadores animados al entrar en viewport.
+const stats = [
+  { count: 1974, suffix: "", label: "Año de fundación" },
+  { count: 100, suffix: "%", label: "Compromiso con la Palabra" },
+  { count: 3, suffix: "+", label: "Reuniones semanales" },
+  { count: 100, suffix: "+", label: "Familias acompañadas" },
+  { count: 1, suffix: "", label: "Misión: Cristo" },
+];
+---
+
+<section class="section section-dark">
+  <div class="container">
+    <div class="eyebrow reveal-el">04 — Nuestra Historia</div>
+    <h2 class="section-headline reveal-el" style="margin-bottom:48px">
+      Una comunidad que <em>crece</em>
+    </h2>
+    <div class="stats-grid">
+      {stats.map((s) => (
+        <div class="stat-card reveal-el">
+          <div class="stat-value" data-count={s.count} data-suffix={s.suffix}>0</div>
+          <div class="stat-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

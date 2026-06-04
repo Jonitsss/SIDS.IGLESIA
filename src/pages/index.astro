@@ -1,0 +1,55 @@
+---
+import Base from "../layouts/Base.astro";
+import Loader from "../components/Loader.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Marquee from "../components/Marquee.astro";
+import About from "../components/About.astro";
+import Values from "../components/Values.astro";
+import Stats from "../components/Stats.astro";
+import Meetings from "../components/Meetings.astro";
+import Location from "../components/Location.astro";
+import Footer from "../components/Footer.astro";
+
+const marqueeLightItems = [
+  { text: "Santa Iglesia del Señor" },
+  { text: "Fe" },
+  { text: "Esperanza" },
+  { text: "Amor" },
+  { text: "Árbol de Vida" },
+];
+
+const marqueeDarkItems = [
+  { text: "LAS PUERTAS ESTÁN ABIERTAS" },
+  { text: "TE ESPERAMOS" },
+  { text: "SUMATE A LA COMUNIDAD" },
+];
+---
+
+<Base>
+  <Loader />
+
+  <Nav />
+
+  <main class="page" id="page" id-anchor="top">
+    <span id="top" aria-hidden="true"></span>
+
+    <Hero />
+
+    <Marquee variant="light" items={marqueeLightItems} />
+
+    <About />
+
+    <Values />
+
+    <Marquee variant="dark" items={marqueeDarkItems} />
+
+    <Stats />
+
+    <Meetings />
+
+    <Location />
+
+    <Footer />
+  </main>
+</Base>

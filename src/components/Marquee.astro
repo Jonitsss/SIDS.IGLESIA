@@ -1,0 +1,24 @@
+---
+interface Props {
+  variant: "light" | "dark";
+  items: { text: string; display?: boolean }[];
+}
+
+const { variant, items } = Astro.props;
+const sectionClass = variant === "light" ? "marquee-light" : "marquee-dark";
+const itemClass = variant === "light" ? "marquee-serif" : "marquee-display";
+
+// Duplicamos los items para que el loop sea continuo (atributo aria-hidden en la copia).
+const looped = [...items, ...items];
+---
+
+<div class={`marquee-section ${sectionClass}`}>
+  <div class="marquee-track">
+    {looped.map((item, i) => (
+      <span class="marquee-item" aria-hidden={i >= items.length ? "true" : undefined}>
+        <span class={itemClass}>{item.text}</span>
+        <span class="marquee-dot">◆</span>
+      </span>
+    ))}
+  </div>
+</div>
